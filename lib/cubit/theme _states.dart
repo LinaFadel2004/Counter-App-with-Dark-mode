@@ -4,7 +4,7 @@ abstract class ThemeStates {
 }
 
 class ThemeInit extends ThemeStates{
-  ThemeInit() : super(false);
+  ThemeInit(bool isDark) : super(isDark);
 }
 
 class ThemeUpdate extends ThemeStates{

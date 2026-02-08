@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:state_management_counter_app/cubit/counter_cubit.dart';
 
 import '../cubit/counter_states.dart';
@@ -7,13 +8,12 @@ import '../cubit/theme _states.dart';
 import '../cubit/theme_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key, required this.title});
+  HomeScreen({super.key, required this.title});
 
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    print('object');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -31,8 +31,11 @@ class HomeScreen extends StatelessWidget {
                     title: const Text('Dark Mode'),
                     secondary: const Icon(Icons.dark_mode),
                     value: state.isDark,
-                    onChanged: (value) {
-                      context.read<ThemeCubit>().DarkMode();
+                    onChanged: (value){
+                      context.read<ThemeCubit>().toggleTheme();
+                      // SharedPreferences save_theme =
+                      //     await SharedPreferences.getInstance();
+                      // save_theme.setBool('isDark', value);
                     },
                   ),
                 );
@@ -53,7 +56,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-
           ],
         ),
       ),

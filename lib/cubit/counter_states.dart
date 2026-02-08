@@ -5,7 +5,7 @@ abstract class CounterStates {
 }
 
 class CounterInit extends CounterStates{
-  CounterInit() : super(0);
+  CounterInit(int currentCount) : super(currentCount);
 }
 
 class CounterUpdate extends CounterStates{
